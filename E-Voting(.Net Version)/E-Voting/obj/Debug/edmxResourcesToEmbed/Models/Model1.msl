@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AccountdbModelStoreContainer" CdmEntityContainer="AccountdbEntities">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(AccountdbModel.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="socialsecuritynumber" ColumnName="socialsecuritynumber" />
+          <ScalarProperty Name="password1" ColumnName="password1" />
+          <ScalarProperty Name="password2" ColumnName="password2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Elections">
+      <EntityTypeMapping TypeName="AccountdbModel.Election">
+        <MappingFragment StoreEntitySet="Election">
+          <ScalarProperty Name="Content1" ColumnName="Content1" />
+          <ScalarProperty Name="ParticipantName2" ColumnName="ParticipantName2" />
+          <ScalarProperty Name="ParticipantName1" ColumnName="ParticipantName1" />
+          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RespectewLetters">
+      <EntityTypeMapping TypeName="AccountdbModel.RespectewLetter">
+        <MappingFragment StoreEntitySet="RespectewLetter">
+          <ScalarProperty Name="yourletter" ColumnName="yourletter" />
+          <ScalarProperty Name="givenemail" ColumnName="givenemail" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Votes">
+      <EntityTypeMapping TypeName="AccountdbModel.Vote">
+        <MappingFragment StoreEntitySet="Vote">
+          <ScalarProperty Name="Whovotedemail" ColumnName="Whovotedemail" />
+          <ScalarProperty Name="Whovotedname" ColumnName="Whovotedname" />
+          <ScalarProperty Name="WhichParticipant" ColumnName="WhichParticipant" />
+          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

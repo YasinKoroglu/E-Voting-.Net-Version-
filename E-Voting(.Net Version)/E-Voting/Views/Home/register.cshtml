@@ -1,0 +1,192 @@
+﻿@model E_Voting.Models.User
+@{ ViewBag.Title = "register"; }
+
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>signup</title>
+    <style>
+        input[type=button] {
+            background-color: #04AA6D;
+            color: white;
+            border: none;
+            margin-left: 10px;
+        }
+
+        input[type=text], input[type=button], input[type=password], input[type=email] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            text-align: center;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+
+<div>
+    <h2 style="text-align:center"> Sign Up </h2>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @if (Session["UserId"] == null)
+                {
+            @Html.ActionLink("E-Voting", "home", "Home", new { area = "" }, new { @class = "navbar-brand" }) }
+                        else
+                        {
+            @Html.ActionLink("E-Voting", "profile", "Home", new { area = "" }, new { @class = "navbar-brand" })}
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("AboutUs", "home", "Home")</li>
+                    <li>@Html.ActionLink("Campaigns", "Campaigns", "Home")</li>
+                    <li>@Html.ActionLink("ContactUs", "ContactUs", "Home")</li>
+                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*@using (Html.BeginForm("Saveuser", "Home", FormMethod.Post))
+    {
+
+    <div style="text-align: center; margin-top:75px">
+        <input style="width: 300px" type="text" id="firstname" name="firstname" placeholder="First Name*">
+        <br />
+        <input style="width: 300px" type="text" id="lastname" name="lastname" placeholder="Last Name*">
+        <br />
+        <input style="width: 300px" type="text" id="email" name="email" placeholder="Email*">
+        <br />
+        <input style="width: 300px" type="text" id="socialsecuritynumber" name="socialsecuritynumber" placeholder="SSN*" maxlength="11" minlengeth="11">
+        <br />
+        <input style="width: 300px" type="password" id="password1" name="password1" placeholder="Password*">
+        <br />
+        <input style="width: 300px" type="password" id="password2" name="password2" placeholder="Password Again*">
+
+        <div>
+            <a href="Login">
+                <input type="button" value="Login Instead" />
+            </a><br />
+            <a href="Login">
+                <input class="btn btn-block btn-primary" type="submit" value="SignUp" style="margin-left:43%" />
+            </a>
+        </div>
+    </div>
+    }*@
+
+
+
+
+
+
+
+
+<form id="myForm">
+
+    <div style="text-align: center; margin-top:75px">
+        <input style="width: 300px" type="text" id="firstname" name="firstname" placeholder="First Name" required>
+        <br />
+        <input style="width: 300px" type="text" id="lastname" name="lastname" placeholder="Last Name" required>
+        <br />
+        <input style="width: 300px" type="email" id="email" name="email" placeholder="Email" required>
+        <br />
+        <input style="width: 300px" type="text" id="socialsecuritynumber" name="socialsecuritynumber" placeholder="SSN" pattern=".{11,}" maxlength="11"  required>
+        <br />
+        <input style="width: 300px" type="password" id="password1" name="password1" placeholder="Password"  required>
+        <br />
+        <input style="width: 300px" type="password" id="password2" name="password2" placeholder="Password Again" required>
+
+        <div>
+            <a href="Login">
+                <input type="button" value="Login Instead" />
+            </a><br />
+            <a href="Login">
+                <input  type="button" value="SignUp" onclick="Saveuser()"  />
+            </a>
+        </div>
+    </div>
+
+</form>
+
+
+<script>
+
+    var Saveuser = function () {
+        
+        debugger
+        
+        var data = $("#myForm").serialize();
+
+        $.ajax({
+            type: "Post",
+            url: "/Home/Saveuser",
+            data: data,
+            success: function (response) {
+
+                alert("Thank you for registration!!");
+
+            }
+
+        
+
+        })
+
+
+
+    }
+
+
+    //To check 1. and 2. password are same or not but not completed exactly so need to work on this too...
+    /*function compareTwoPassword() {
+        var firstpassword = document.getElementById("password1");
+        var secondpassword = document.getElementById("password2");
+        if (firstpassword.value !== secondpassword.value) {
+            alert("Your passwords does not match!!")
+        }
+    }*/
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

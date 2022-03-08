@@ -1,0 +1,98 @@
+﻿@model E_Voting.Models.RespectewLetter
+@{ ViewBag.Title = "ContactUs"; }
+
+
+
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        input[type=button], input[type=submit] {
+            background-color: #04AA6D;
+            color: white;
+            border: none;
+            margin-left: 10px;
+        }
+
+        input[type=text], input[type=button], input[type=email], input[type=submit] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            text-align: center;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <div>
+            <h1 style="text-align:center"> Contact Us </h1>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @if (Session["UserId"] == null)
+                        {
+                    @Html.ActionLink("E-Voting", "home", "Home", new { area = "" }, new { @class = "navbar-brand" }) }
+                                else
+                                {
+                    @Html.ActionLink("E-Voting", "profile", "Home", new { area = "" }, new { @class = "navbar-brand" })}
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("AboutUs", "home", "Home")</li>
+                            <li>@Html.ActionLink("Campaigns", "Campaigns", "Home")</li>
+                            <li>@Html.ActionLink("ContactUs", "ContactUs", "Home")</li>
+                            <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            @using (Html.BeginForm("Savecontactus", "Home", FormMethod.Post))
+            {
+                <div style="text-align: center; margin-top: 70px">
+
+                    <input style="width: 300px" type="text" id="fullname" name="fullname" placeholder="Full Name" required><br />
+                    <input style="width: 300px" type="email" id="email" name="givenemail" placeholder="Email" required><br />
+                    <input style="width: 300px; height: 200px" type="text" id="message" name="yourletter" placeholder="Message" required><br />
+                    <a href="home">
+                        <input type="submit" value="Contact Us" />
+                    </a><br />
+                    <div class="">
+                        <a href="https://www.facebook.com/">
+                            <img src="https://girisyap.com/wp-content/uploads/2018/02/facebook-icon-preview-1-400x400-300x300.png" alt="facebook logo" width="70" height="70" />
+                        </a>
+                        <a href="https://www.twitter.com/">
+                            <img src="https://icon-library.com/images/small-twitter-icon-png/small-twitter-icon-png-19.jpg" alt="twitter logo" width="70" height="70" />
+                        </a>
+                        <a href="https://www.instagram.com/">
+                            <img src="https://icon-library.com/images/small-instagram-icon/small-instagram-icon-2.jpg" alt="instagram logo" width="70" height="70" />
+                        </a>
+                    </div>
+                </div>
+                }
+
+
+
+
+
+
+        </div>
+    </div>
+</body>
+</html>

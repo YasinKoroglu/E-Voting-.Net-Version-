@@ -1,0 +1,286 @@
+﻿
+@model E_Voting.Models.Vote
+@{
+    ViewBag.Title = "campaigns";
+}
+
+
+<!DOCTYPE html>
+
+<style>
+    .para {
+        width: 680px;
+        height: 100px;
+    }
+
+    .vote {
+        margin-left: 400px;
+        margin-inline: 100px,100px;
+        margin-top: -100px;
+    }
+
+    input[type=text], input[type=submit] {
+        width: 70%;
+        padding: 12px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        text-align: center;
+        margin-left: 300px;
+    }
+
+
+    /* Style the submit button */
+    input[type=submit] {
+        background-color: #04AA6D;
+        color: white;
+        border: none;
+        margin-left: 300px;
+    }
+</style>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Campaigns</title>
+</head>
+<h2>CAMPAIGNS</h2>
+<body>
+    @* <div class="para">
+            <p>
+                Lorem ipsum dolor sit amet, errem suscipit recusabo vel ea, ei vis dolor graeco.
+                Aperiri inimicus reprimique mel an, nulla postea salutandi no mea. Cu malis
+                appetere vim, movet scripta no vel, nec magna impedit explicari ut. An eruditi
+                phaedrum incorrupte eos, ubique constituam ea mea, te case saepe constituto
+                his. Quis nostrud ex his, vim graecis dissentiunt an.
+            </p>
+
+            <div class="vote">
+                <input type="submit" value="vote 1">
+                <input type="submit" value="vote 2">
+            </div>
+            <br />
+            <br />
+            <p>
+                Lorem ipsum dolor sit amet, errem suscipit recusabo vel ea, ei vis dolor graeco.
+                Aperiri inimicus reprimique mel an, nulla postea salutandi no mea. Cu malis
+                appetere vim, movet scripta no vel, nec magna impedit explicari ut. An eruditi
+                phaedrum incorrupte eos, ubique constituam ea mea, te case saepe constituto
+                his. Quis nostrud ex his, vim graecis dissentiunt an.
+            </p>
+            <div class="vote">
+                <input type="submit" value="vote 1">
+                <input type="submit" value="vote 2">
+            </div>
+            <br />
+            <br />
+            <p>
+                Lorem ipsum dolor sit amet, errem suscipit recusabo vel ea, ei vis dolor graeco.
+                Aperiri inimicus reprimique mel an, nulla postea salutandi no mea. Cu malis
+                appetere vim, movet scripta no vel, nec magna impedit explicari ut. An eruditi
+                phaedrum incorrupte eos, ubique constituam ea mea, te case saepe constituto
+                his. Quis nostrud ex his, vim graecis dissentiunt an.
+            </p>
+            <div class="vote">
+                <input type="submit" value="vote 1">
+                <input type="submit" value="vote 2">
+            </div>
+            <br />
+        </div>
+    *@
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
+
+@*
+    <div class="col-md-9">
+        <table class="table" id="MyDataTable">
+            <thead>
+                <tr>
+                    <th>
+                        CampaignName
+                    </th>
+                    <th>
+                        ParticipantName1
+                    </th>
+                    <th>
+                        ParticipantName2
+                    </th>
+                    <th>
+                        Content1
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody></tbody>
+
+        </table>
+
+    </div>
+
+    <script>
+
+        $(document).ready(function () {
+
+            //$("#MyDataTable").DataTable();
+
+            GetCampaignRecord();
+        })
+        var GetCampaignRecord = function () {
+
+            $.ajax({
+
+                type: "Get",
+                url: "/Home/GetCampaignRecord",
+                success: function (response) {
+
+                    BindDataTable(response);
+
+                }
+            })
+
+        }
+
+
+        var BindDataTable = function (response) {
+
+            $("#MyDataTable").DataTable({
+
+                "aaData": response,
+                "aoColumns": [
+
+                    { "mData": "CampaignName" },
+                    { "mData": "ParticipantName1" },
+                    { "mData": "ParticipantName2" },
+                    { "mData": "Content1" },
+
+
+                ]
+
+            });
+        }
+
+
+    </script>
+*@
+
+<div>
+    <table class="table table-striped w-75">
+        <thead>
+        <th>CampaignName</th>
+        <th>ParticipantName1</th>
+        <th>ParticipantName2</th>
+        <th>Content</th>
+        </thead>
+        @foreach (var item in ViewBag.userdetails)
+        {
+
+            <tr style="font-size: 1.5rem; color: brown;">
+                <td>
+                    @item.CampaignName
+                </td>
+                <td>
+                    @item.ParticipantName1
+
+                </td>
+                <td>
+                    @item.ParticipantName2
+                    <br />
+
+                </td>
+
+
+                <td>
+                    @item.Content1
+                </td>
+            </tr>
+
+
+
+        }
+
+
+    </table>
+
+    @using (Html.BeginForm("Savevote", "Home", FormMethod.Post))
+    {
+<div style="margin-left: 25%">
+    @if (Session["UserId"] != null)
+    {
+        <input placeholder="Campaign  Name" style="width: 300px" type="text" id="campaignname" name="campaignname" required><br />
+        <input placeholder="Whichparticipant" style="width: 300px" type="text" id="Whichparticipant" name="Whichparticipant" required><br />
+
+        <input type="hidden" name="Whovotedname" value="@Session["Username"]" />
+        <input type="hidden" name="Whovotedemail" value="@Session["UserId"]" />
+        <input type="submit" name="" />
+    }
+
+</div>
+    }
+
+
+
+
+
+
+
+
+
+    <br />
+
+
+
+
+
+</div>
+<style>
+    table#t01 {
+        width: 100%;
+        background-color: #f1f1c1;
+    }
+
+        table#t01 tr:nth-child(even) {
+            background-color: #eee;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        table#t01 th {
+            color: white;
+            background-color: blue;
+        }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 15px;
+    }
+</style>

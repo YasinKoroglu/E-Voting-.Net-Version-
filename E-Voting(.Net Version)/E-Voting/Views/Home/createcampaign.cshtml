@@ -1,0 +1,88 @@
+﻿@model E_Voting.Models.Election
+@{ ViewBag.Title = "CreateCampaign"; }
+
+<!Doctype html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        input[type=button], input[type=submit]  {
+            background-color: #04AA6D;
+            color: white;
+            border: none;
+            margin-left: 10px;
+        }
+
+        input[type=text], input[type=button], input[type=number], input[type=submit] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            text-align: center;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+
+<div>
+    <div>
+        <h1 style="text-align:center"> Create Campaign </h1>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @if (Session["UserId"] == null)
+                    {
+                @Html.ActionLink("E-Voting", "home", "Home", new { area = "" }, new { @class = "navbar-brand" }) }
+                            else
+                            {
+                @Html.ActionLink("E-Voting", "profile", "Home", new { area = "" }, new { @class = "navbar-brand" })}
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                         @if (Session["UserId"] != null)
+                         {
+                        <li><a href="profile">Welcome @Session["UserName"],</a></li>
+                        <li>@Html.ActionLink("Campaigns", "Campaigns", "Home")</li>}
+                         else
+                         {
+                        <li>@Html.ActionLink("AboutUs", "home", "Home")</li>
+                        
+                        <li>@Html.ActionLink("ContactUs", "ContactUs", "Home")</li>
+                         }
+                        @if (Session["UserId"] != null)
+                        {
+                        <li>@Html.ActionLink("Logout", "home", "Home")</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@using (Html.BeginForm("Savecampaign", "Home", FormMethod.Post))
+{
+
+
+
+<div style=" text-align: center; margin-top: 30px ">
+
+    <input placeholder="Campaign  Name" style="width: 300px" type="text" id="campaignname" name="campaignname" required><br />
+    <input placeholder="Participant Name" style="width: 300px" type="text" id="participantname1" name="participantname1" required><br />
+    <input placeholder="Participant Name" style="width: 300px" type="text" id="participantname2" name="participantname2" required><br />
+    <input placeholder="Campaign Purpose" style="width: 300px; height: 200px" type="text" id="content1" name="content1" required><br />
+
+    <a href="myCampaigns">
+        <input  type="submit" value="Create"  />
+    </a>
+
+</div>}          

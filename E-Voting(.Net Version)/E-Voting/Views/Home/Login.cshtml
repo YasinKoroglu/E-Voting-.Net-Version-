@@ -1,0 +1,125 @@
+﻿@model E_Voting.Models.User
+@{ 
+    ViewBag.Title = "Login"; 
+    }
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <style>
+        input[type=button] {
+            background-color: #04AA6D;
+            color: white;
+            border: none;
+            margin-left: 10px;
+        }
+
+        input[type=text], input[type=button], input[type=password] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            text-align: center;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <div>
+            <h2 style="text-align: center"> Log In </h2>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @if (Session["UserId"] == null)
+                        {
+                    @Html.ActionLink("E-Voting", "home", "Home", new { area = "" }, new { @class = "navbar-brand" }) }
+                                else
+                                {
+                    @Html.ActionLink("E-Voting", "profile", "Home", new { area = "" }, new { @class = "navbar-brand" })}
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("AboutUs", "home", "Home")</li>
+                            <li>@Html.ActionLink("Campaigns", "Campaigns", "Home")</li>
+                            <li>@Html.ActionLink("ContactUs", "ContactUs", "Home")</li>
+                            <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <form id="myForm">
+                <div style="text-align:center; margin-top: 150px">
+                    
+                    <input  type="text" id="email" name="email" placeholder="Email" required><br />
+                    <input  type="password" id="password1" name="password1" placeholder="Password" required><br />
+                    <div>
+                    <a href="register">
+                        <input type="button" value="SignUp" />
+                    </a><br />
+                    
+                        <a href="profile">
+                        <input type="button" onclick="LoginUser()" value="LogIn" />
+                    </a>
+                       
+                        
+                        <br /><br />
+                    </div>
+                    
+                </div>
+            </form>
+
+            
+                
+            
+
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+
+    var LoginUser = function () {
+        debugger
+        var data = $("#myForm").serialize();
+
+        $.ajax({
+            type: "Post",
+            url: "/Home/LoginUser",
+            data: data,
+            success: function (response) {
+                debugger
+                debugger
+                if (response == "fail") {
+
+                    window.location.href = "/Home/Login";
+                } else {
+
+                    window.location.href = "/Home/profile";
+                }
+                
+              
+           
+            }
+
+
+
+        })
+
+
+
+    }
+
+</script>

@@ -1,0 +1,104 @@
+﻿@{ ViewBag.Title = "setting"; }
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        input[type=button] {
+            background-color: #04AA6D;
+            color: white;
+            border: none;
+            margin-left: 10px;
+        }
+
+        input[type=text], input[type=button] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            text-align: center;
+            margin-left: 40px;
+        }
+    </style>
+
+    <title>settings</title>
+</head>
+
+<body>
+
+    <div style="height: 1000px; left: 50%; margin-left: 100px;">
+
+        <div>
+
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @if (Session["UserId"] == null)
+                        {
+                    @Html.ActionLink("E-Voting", "home", "Home", new { area = "" }, new { @class = "navbar-brand" }) }
+                                else
+                                {
+                    @Html.ActionLink("E-Voting", "profile", "Home", new { area = "" }, new { @class = "navbar-brand" })}
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            @if (Session["UserId"] != null)
+                            {
+                        <li><a href="profile">Welcome @Session["UserName"],</a></li>
+                        <li>@Html.ActionLink("Campaigns", "Campaigns", "Home")</li>}
+                            else
+                            {
+                            <li>@Html.ActionLink("AboutUs", "home", "Home")</li>
+                            
+                            <li>@Html.ActionLink("ContactUs", "ContactUs", "Home")</li>
+                            }
+                            @if (Session["UserId"] != null)
+                            {
+                            <li>@Html.ActionLink("Logout", "home", "Home")</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div style="padding-top:50px; padding-left:500px">
+                <h2 style="margin-top: 1px;"> Settings </h2>
+            </div>
+          
+            <form>
+
+                <div style="text-align:center; margin-top: 200px; ">
+
+
+                    <div>
+
+                        <input type="text" placeholder="Email*" style="" required />
+                        <a href="home">
+                            <input type="button" value="Change Email" />
+                        </a>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Password*" style="width: 300px" required />
+                        <a href="SignUp">
+                            <input type="button" value="Change Password" />
+                        </a>
+                    </div>
+                </div>
+
+
+            </form>
+
+
+
+
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AccountdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Election">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CampaignName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ParticipantName1" Type="nvarchar" MaxLength="50" />
+    <Property Name="ParticipantName2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Content1" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="RespectewLetter">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fullname" Type="nvarchar" MaxLength="50" />
+    <Property Name="givenemail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="yourletter" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstname" Type="varchar" MaxLength="50" />
+    <Property Name="lastname" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="socialsecuritynumber" Type="varchar" MaxLength="11" />
+    <Property Name="password1" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password2" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Vote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CampaignName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WhichParticipant" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Whovotedname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Whovotedemail" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="AccountdbModelStoreContainer">
+    <EntitySet Name="Election" EntityType="Self.Election" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RespectewLetter" EntityType="Self.RespectewLetter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vote" EntityType="Self.Vote" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

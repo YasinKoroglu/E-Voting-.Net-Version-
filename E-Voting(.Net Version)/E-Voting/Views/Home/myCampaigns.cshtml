@@ -1,0 +1,121 @@
+﻿@{ ViewBag.Title = "MyCampaigns"; }
+
+
+<!DOCTYPE html>
+
+<style>
+    .para {
+        width: 680px;
+        height: 100px;
+    }
+
+    .vote {
+        margin-left: 400px;
+        margin-inline: 100px,100px;
+        margin-top: -70px;
+    }
+    input[type=text], input[type=submit] {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        text-align: center;
+        margin-left: 300px;
+    }
+
+
+    /* Style the submit button */
+    input[type=submit] {
+        background-color: #04AA6D;
+        color: white;
+        border: none;
+        margin-left: 300px;
+    }
+</style>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>My Campaigns</title>
+</head>
+<h2>MY CAMPAIGNS</h2>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @if (Session["UserId"] == null)
+                {
+            @Html.ActionLink("E-Voting", "home", "Home", new { area = "" }, new { @class = "navbar-brand" }) }
+                        else
+                        {
+            @Html.ActionLink("E-Voting", "profile", "Home", new { area = "" }, new { @class = "navbar-brand" })}
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (Session["UserId"] != null)
+                    {
+                        <li><a href="profile">Welcome @Session["UserName"],</a></li>
+                        <li>@Html.ActionLink("Campaigns", "Campaigns", "Home")</li>
+}
+                    else
+                    {
+                <li>@Html.ActionLink("AboutUs", "home", "Home")</li>
+
+                                <li>@Html.ActionLink("ContactUs", "ContactUs", "Home")</li>}
+                    @if (Session["UserId"] != null)
+                    {
+                <li>@Html.ActionLink("Logout", "home", "Home")</li>}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="para">
+        <div>
+            <div class="">
+                <p>
+                    Lorem ipsum dolor sit amet, errem suscipit recusabo vel ea, ei vis dolor graeco.
+                    Aperiri inimicus reprimique mel an, nulla postea salutandi no mea. Cu malis
+                    appetere vim, movet scripta no vel, nec magna impedit explicari ut. An eruditi
+                    phaedrum incorrupte eos, ubique constituam ea mea, te case saepe constituto
+                    his. Quis nostrud ex his, vim graecis dissentiunt an.
+                </p>
+
+                <div class="vote">
+                    <input type="submit" value="Delete">
+                </div>
+            </div><br /><br />
+        </div>
+        <br />
+        <p>
+            Lorem ipsum dolor sit amet, errem suscipit recusabo vel ea, ei vis dolor graeco.
+            Aperiri inimicus reprimique mel an, nulla postea salutandi no mea. Cu malis
+            appetere vim, movet scripta no vel, nec magna impedit explicari ut. An eruditi
+            phaedrum incorrupte eos, ubique constituam ea mea, te case saepe constituto
+            his. Quis nostrud ex his, vim graecis dissentiunt an.
+        </p>
+        <div class="vote">
+            <input type="submit" value="Delete">
+        </div><br /><br />
+        <br />
+        <p>
+            Lorem ipsum dolor sit amet, errem suscipit recusabo vel ea, ei vis dolor graeco.
+            Aperiri inimicus reprimique mel an, nulla postea salutandi no mea. Cu malis
+            appetere vim, movet scripta no vel, nec magna impedit explicari ut. An eruditi
+            phaedrum incorrupte eos, ubique constituam ea mea, te case saepe constituto
+            his. Quis nostrud ex his, vim graecis dissentiunt an.
+        </p>
+        <div class="vote">
+            <input type="submit" value="Delete">
+        </div>
+        <br />
+    </div>
+
+</body>
+</html>

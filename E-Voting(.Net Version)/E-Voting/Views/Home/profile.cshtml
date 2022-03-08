@@ -1,0 +1,108 @@
+﻿@{ ViewBag.Title = "profile"; }
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <style>
+        input[type=button] {
+            background-color: #04AA6D;
+            color: white;
+            border: none;
+            margin-left: 10px;
+        }
+
+        input[type=text], input[type=button] {
+            width: 100%;
+            padding: 20px;
+            margin: 8px 0;
+            margin-top: 30px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            text-align: center;
+            margin-left: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    
+
+    <div style=" height: 1000px; left: 50%; margin-left: 100px;">
+
+        <div>
+
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @if (Session["UserId"] == null)
+                        {
+                    @Html.ActionLink("E-Voting", "home", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                }
+                else
+                {
+                    @Html.ActionLink("E-Voting", "profile", "Home", new { area = "" }, new { @class = "navbar-brand" })}
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            @if (Session["UserId"] != null)
+                            {
+                        <li><a href="profile">Welcome @Session["UserName"],</a></li>
+                        <li>@Html.ActionLink("Campaigns", "Campaigns", "Home")</li>}
+                            else
+                            {
+                            <li>@Html.ActionLink("AboutUs", "home", "Home")</li>
+                            
+                            <li>@Html.ActionLink("ContactUs", "ContactUs", "Home")</li>
+                            }
+                            @if (Session["UserId"] != null)
+                            {
+                        <li>@Html.ActionLink("logout", "logout", "Home")</li>}
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <form>
+                <div style="text-align:center; margin-top: 15% ">
+                    <div>
+                        <div>
+
+                        </div>
+                        <a href="myCampaigns">
+                            <input type="button" value="My Campaigns" />
+                        </a>
+                    </div>
+                    <div>
+
+                        <a href="createcampaign">
+                            <input type="button" value="Create Campaign" />
+                        </a>
+                    </div>
+                    <div>
+                        <a href="setting">
+                            <input type="button" value="Profile Settings" />
+                        </a>
+                    </div>
+                </div>
+
+
+            </form>
+
+
+
+
+
+        </div>
+    </div>
+</body>
+</html>
